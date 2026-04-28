@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 95%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e65b50;
+        }
+
+        .msg {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>📝 Tạo tài khoản</h2>
+
+    <input type="text" id="newUser" placeholder="Tên đăng nhập">
+    <input type="password" id="newPass" placeholder="Mật khẩu">
+
+    <button onclick="register()">Đăng ký</button>
+
+    <p class="msg" id="msg"></p>
+
+    <p>Đã có tài khoản? 
+        <a href="login.html">Đăng nhập</a>
+    </p>
+</div>
+
+<script>
+function register() {
+    var user = document.getElementById("newUser").value;
+    var pass = document.getElementById("newPass").value;
+
+    if (user === "" || pass === "") {
+        document.getElementById("msg").innerText = "Vui lòng nhập đủ thông tin!";
+        return;
+    }
+
+    // lưu vào trình duyệt
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    document.getElementById("msg").innerText = "Tạo tài khoản thành công!";
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 1500);
+}
+</script>
+
+</body>
+</html>
